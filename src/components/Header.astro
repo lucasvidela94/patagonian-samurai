@@ -1,0 +1,19 @@
+---
+const pages = [
+	{ name: "Acerca de mi", href: "/about-me" },
+	{ name: "Mis trabajos", href: "/about-works" },
+	{ name: "Mis proyectos", href: "/proyects" },
+	{ name: "Mis tecnologias", href: "/tech-stack" },
+].map((page) => ({
+	...page,
+	active: Astro.url.pathname === page.href,
+}))
+---
+
+<header class="mb-10 h-16 max-w-[100vw] lg:h-24" >
+	<nav class="group flex h-full w-full items-center justify-between px-10 lg:justify-center">
+		{
+			pages.map(({name,href}) => (<></>))
+		}
+	</nav>
+</header>

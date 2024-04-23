@@ -1,0 +1,53 @@
+---
+import { ViewTransitions } from "astro:transitions"
+
+import SEO, { type Preload } from "@/components/SEO.astro"
+
+import "@fontsource/fira-mono"
+
+interface Props {
+	title: string
+	description: string
+	preload?: Array<Preload>
+	canonical?: string
+	image?: string
+}
+
+const { title, description, preload, canonical, image } = Astro.props
+---
+
+<!doctype html>
+<html lang="es">
+	<head>
+		<SEO
+			canonical={canonical}
+			description={description}
+			image={image}
+			preload={preload}
+			title={title}
+		/>
+		<ViewTransitions />
+		<script is:inline src="/js/register-service-worker.js"></script>
+	</head>
+
+	<body
+		class="selection:bg-primary selection:text-secondary [&_:focus-visible]:ring-primary overflow-x-hidden [&_:focus-visible]:outline-none [&_:focus-visible]:ring-2"
+	>
+		<slot />
+		<style is:global>
+			:root {
+				--color-primary: #ddd;
+				--color-secondary: #333;
+				--color-accent: #b4cd02;
+				--color-accent-rgb: 213, 255, 0;
+				font-family: "Fira Mono", monospace;
+
+				--background-color: #141800;
+				--background-twitch: var(--color-twitch-ice);
+
+				--color-twitch: #9146ff;
+				--color-twitch-ice: #f0f0ff;
+			}
+		</style>
+	</body>
+</html>

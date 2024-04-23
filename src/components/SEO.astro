@@ -1,0 +1,81 @@
+---
+export interface Preload {
+	as: string
+	href: string
+	type: string
+	rel?: "preload" | "prefetch"
+	crossorigin?: string
+}
+
+interface Props {
+	title: string
+	description: string
+	preload?: Array<Preload>
+	canonical?: string
+	image?: string
+}
+
+const { title, description, preload, canonical, image = "/img/og.jpg" } = Astro.props as Props
+
+const canonicalURL = canonical
+	? new URL(canonical, Astro.site)
+	: new URL(Astro.url.pathname, Astro.site)
+---
+
+<title>{title}</title>
+
+{/* Metadatos generales */}
+<meta charset="UTF-8" />
+<meta name="description" content={description} />
+<meta name="author" content="Nombre del Desarrollador" />
+<meta
+	name="keywords"
+	content="desarrollador fullstack, portfolio, React, Next.js, Remix, JavaScript, TypeScript, Python, Django, Django Rest Framework, HTML, CSS"
+/>
+<meta name="robots" content="index, follow" />
+<meta name="googlebot" content="index, follow" />
+
+{/* Metadatos de Twitter */}
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content={title} />
+<meta name="twitter:description" content={description} />
+<meta name="twitter:image" content={new URL(image, Astro.url)} />
+
+{/* Metadatos de Open Graph */}
+<meta property="og:title" content={title} />
+<meta property="og:description" content={description} />
+<meta property="og:type" content="website" />
+<meta property="og:url" content={canonicalURL} />
+<meta property="og:image" content={new URL(image, Astro.url)} />
+
+{/* Configuración de viewport y tema */}
+<meta name="viewport" content="width=device-width" />
+<meta name="theme-color" content="#d5ff00" />
+
+{/* Enlaces */}
+<link rel="canonical" href={canonicalURL} />
+<link rel="icon" href="/img/icons/favicon.ico" sizes="32x32" />
+<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+<link rel="apple-touch-icon" href="/img/icons/apple-touch-icon.png" />
+<link rel="manifest" href="/manifest.webmanifest" />
+<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+<meta name="msapplication-config" content="/browserconfig.xml" />
+
+<!-- <link rel="preload" href={atomic} as="font" type="font/woff2" crossorigin />
+<link rel="preload" href={jost} as="font" type="font/woff2" crossorigin />
+
+{
+	preload?.map(({ href, as, type, rel = "preload", crossorigin }) => (
+		<link {rel} {href} {as} {type} {crossorigin} />
+	))
+} -->
+
+{/* Registro de Service Worker */}
+{
+	!import.meta.env.DEV && (
+		<>
+			<script is:inline src="/registerSW.js" />
+			<link rel="manifest" href="/manifest.webmanifest" />
+		</>
+	)
+}
