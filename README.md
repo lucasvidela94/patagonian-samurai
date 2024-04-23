@@ -3,22 +3,18 @@
 # Lista de cosas para hacer para no boludear
 
 1.  Diseño del sitio web en Figma:
-    - [ ] Selección de fuente general
-    - [ ] Paleta de colores
-    - [ ] Diseño de la página de inicio
-    - [ ] Diseño de la página de proyectos
-    - [ ] Diseño de la página "Sobre mí"
-    - [ ] Diseño de la página de contacto
-    - [ ] Diseño de la navegación y menús
-    - [ ] Diseño responsivo para diferentes dispositivos
+    - [x] Selección de fuente general
+    - [x] Paleta de colores
+    - [x] Diseño de la página de inicio
+    - [x] Diseño de la página de proyectos
+    - [x] Diseño de la página "Sobre mí"
+    - [x] Diseño de la página de contacto
+    - [x] Diseño de la navegación y menús
+    - [] Diseño responsivo para diferentes dispositivos
     - [ ] Revisión y ajustes finales
 2.  Planificación de rutas:
-    - [ ] Definir la estructura de navegación del sitio
-    - [ ] Identificar las secciones principales
-    - [ ] Establecer la jerarquía de información
-    - [ ] Crear un mapa del sitio
-    - [ ] Considerar la experiencia del usuario en la navegación
-    - [ ] Revisión y ajustes finales
+    - [x] Definicion de rutas en base a las secciones
+    - [x] Definicion de idioma principal para rutas (internalizacion considerada)
 3.  Desarrollo del sitio web:
     - [ ] Configuración del entorno de desarrollo
     - [ ] Creación de la estructura de archivos y carpetas
